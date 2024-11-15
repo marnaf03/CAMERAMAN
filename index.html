@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access</title>
+</head>
+<body>
+    <h1>Access Your Camera</h1>
+    <video id="cameraStream" autoplay></video>
+    <script>
+        const video = document.getElementById('cameraStream');
+
+        // Request access to the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(error => {
+                console.error("Error accessing the camera: ", error);
+                alert("Camera access denied or unavailable.");
+            });
+    </script>
+</body>
+</html>
